@@ -61,7 +61,7 @@ void redirection(char * argv[], int ac) {
 
 //Fonction moncd
 void moncd(char ** mot) {// pour comparer des chaines
-                //TODO ici faire un raccourci avec moncd()
+                
             char * dir;
             int t;
 
