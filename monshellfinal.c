@@ -30,6 +30,7 @@ int main(int argc, char * argv[]) {
     int nbcommandes_pipes; //correspond au nombres de commandes sur la ligne si il y a pipes
     int pipes[2]; // tableau avec les pipes
     int fd_in = 0; //mémoire de stdin précédent
+    
 
      /* Decoupe PATH en repertoires */
     decouper(strdup(getenv("PATH")), ":", dirs, MaxDirs);
@@ -37,6 +38,8 @@ int main(int argc, char * argv[]) {
    
     /* Affiche le prompt et boucle sur le traitement de la ligne de commande */
     for( printf( PROMPT); fgets(ligne, sizeof ligne, stdin) != 0; printf( PROMPT) ) {
+        while (waitpid(-1, NULL, WNOHANG) > 0);
+        int flag_arriereplan = 0; //flag pour gérer les redirections
 
          /* On rempli le tableau commandes avec les commandes avant  et après les | */
 
@@ -45,9 +48,8 @@ int main(int argc, char * argv[]) {
         if (commandes[0] == 0)
             // ligne vide
             continue;
+        
     
-
-
         fd_in = 0; //on réinitialise fd_in à 0 à chaque retour au prompt
 
         for (int c =0; c < nbcommandes_pipes ; c++) {
@@ -55,7 +57,12 @@ int main(int argc, char * argv[]) {
             if (mot[0] == 0)
             // ligne vide
             continue;
-            
+
+            if (c == nbcommandes_pipes-1 && MaxiMots>2 && strcmp(mot[MaxiMots -2],"&")==0) {
+                //on vérifie qu'on est à la derniere commande, que sur cette derniere commande y'a autre chose que "&" tout seul, et que le dernier caractere tapé est "&"
+             flag_arriereplan = 1; //gestion des processus en arriere plan
+             mot[MaxiMots -2] = NULL;}
+
         //COMMANDES INTERNES
         
         //------------------Commande moncd --------------------------
@@ -127,8 +134,10 @@ int main(int argc, char * argv[]) {
                  }
                 } 
         }
-        
-        while (wait(NULL) > 0);
+        if (flag_arriereplan==0){
+            for(int i = 0; i < nbcommandes_pipes; i++)
+            wait(NULL);
+        }
     }
     printf( "Bye\n");
     return 0;
