@@ -2,4 +2,3 @@ anciens\ fichiers/
 *.odt
 .~lock.*
 monshell.c
-header.h
