@@ -9,7 +9,7 @@
 /* USAGE         : gcc monshellfinal.c fonctions.c -o monshellfinal puis ./monshellfinal                                                 */
 /* EXEMPLE       : ? ls -l                                                    */
 /* ? moncd /tmp                                               */
-/* ? monexit 
+/* ? monexit                                                    */
 /* ? ls -l > liste.txt                                   */
 /*TODO PROCEDURES EN ARRIERE PLAN ET PIPES*/
 /* ************************************************************************** */

@@ -1,0 +1,28 @@
+.\" Source : https://manpages.ubuntu.com/manpages/jammy/fr/man7/man.7.html
+
+
+.TH MINISHELL  "Manuel de l'utilisateur" "v1.0"
+.SH NOM
+minishell \- Un shell personnalisé
+.SH SYNOPSIS
+.B ./minishell
+.SH DESCRIPTION
+.B minishell
+est un shell minimaliste. Il prend en charge l'exécution de programmes externes, ainsi que plusieurs fonctionnalités internes comme moncd ou monexit.
+.SH Commandes internes
+.TP
+.B moncd [chemin]
+Change le répertoire de travail courant vers le chemin spécifié.
+.TP
+.B monexit
+Quitte proprement le minishell.
+.SH Fonctionnalités
+.TP
+.B Redirections (< >)
+Permet de rediriger l'entrée standard ou la sortie standard vers un fichier.
+.TP
+.B Pipes (|)
+Permet de "chaîner" plusieurs commandes.
+.TP
+.B Arrière-plan (&)
+Lance une commande en tâche de fond.
