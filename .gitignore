@@ -1,4 +1,5 @@
 anciens\ fichiers/
+*.o
 *.odt
 .~lock.*
-monshell.c
+minishell
