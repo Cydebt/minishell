@@ -27,6 +27,8 @@ Pour compiler le projet proprement avec les flags de sécurité :
 Sur Bash :
 
 gcc -Wall -Wextra minishell.c fonctions.c -o minishell
+
+Ou plus simplement avec la commande make  "make ./minishell"
 ________________________________________________________________________________
 
 ENGLISH :
@@ -54,4 +56,6 @@ To compile the project cleanly with security flags:
 On Bash:
 
 gcc -Wall -Wextra minishell.c functions.c -o minishell
+
+Or, the easiest way with make  "make ./minishell"
 ________________________________________________________________________________
